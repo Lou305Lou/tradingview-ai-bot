@@ -1,0 +1,11 @@
+{
+  "secret": "YOUR_WEBHOOK_SECRET",
+  "symbol": "AAPL",
+  "price": 175.32,
+  "timestamp": "2024-04-24T18:30:00Z",
+  "strategy": {
+    "order_action": "buy",
+    "order_price": 175.32,
+    "comment": "Test alert from TradingView"
+  }
+}

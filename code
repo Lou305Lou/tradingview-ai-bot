@@ -1,0 +1,25 @@
+from app.utils.logger import get_logger
+
+logger = get_logger(__name__)
+
+class PositionSizer:
+    @staticmethod
+    def calculate_size(price: float, confidence: float) -> float:
+        """
+        Basic position sizing logic:
+        - Base size = 1 share
+        - Increase size with confidence
+        - Cap size to avoid oversized trades
+        """
+
+        base_size = 1
+        max_size = 5
+
+        # Confidence scales position size (0.0 to 1.0)
+        scaled_size = base_size + (confidence * (max_size - base_size))
+
+        size = round(scaled_size, 2)
+
+        logger.info(f"Calculated position size: {size} shares at price {price}")
+
+        return size
