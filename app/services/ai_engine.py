@@ -1,4 +1,5 @@
 import httpx
+import json
 from app.config import Config
 from app.utils.logger import logger
 
@@ -49,7 +50,12 @@ Return JSON with:
 
         body = {
             "model": Config.MODEL_NAME,
-            "input": prompt
+            "messages": [
+                {
+                    "role": "user",
+                    "content": prompt
+                }
+            ]
         }
 
         try:
@@ -74,8 +80,6 @@ Return JSON with:
 
             logger.info(f"AI raw response: {ai_text}")
 
-            # Attempt to parse JSON safely
-            import json
             try:
                 parsed = json.loads(ai_text)
             except:
