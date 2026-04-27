@@ -25,3 +25,6 @@ async def root():
         "status": "running",
         "message": "TradingView AI Bot is online."
     }
+@app.get("/health")
+async def health():
+    return {"status": "ok"}
